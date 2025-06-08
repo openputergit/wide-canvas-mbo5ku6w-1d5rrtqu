@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro Pulse</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #181628;
+            --accent-gold: #FFD700;
+            --spiritual-pink: #FF99CC;
+            --shadow-blue: #1F3A93;
+        }
+        body {
+            background-color: var(--bg-dark);
+            font-family: 'Open Sans', sans-serif;
+            min-height: 100vh;
+        }
+        .mystical-title {
+            font-family: 'Libre Baskerville', serif;
+        }
+        .feature-card {
+            background: rgba(31, 58, 147, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+        }
+        .starfield {
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                            radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0));
+            background-size: 200px 200px;
+        }
+        .nav-item.active {
+            border-bottom: 2px solid var(--accent-gold);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="fixed bottom-0 w-full bg-[#1F3A93] bg-opacity-90 backdrop-blur-lg">
+        <div class="flex justify-around items-center p-4">
+            <a href="#home" class="nav-item active"><i class="bi bi-house-fill text-2xl"></i></a>
+            <a href="#surprise" class="nav-item"><i class="bi bi-magic text-2xl"></i></a>
+            <a href="#ai" class="nav-item"><i class="bi bi-robot text-2xl"></i></a>
+            <a href="#settings" class="nav-item"><i class="bi bi-gear-fill text-2xl"></i></a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 pb-20">
+        <!-- Header -->
+        <header class="text-center py-8">
+            <h1 class="mystical-title text-4xl text-[#FFD700] mb-2">Astro Pulse</h1>
+            <p class="text-[#CFCFCF]">Ancient Intuition Meets AI</p>
+        </header>
+
+        <!-- Features Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-stars text-3xl text-[#FFD700]"></i>
+                <p class="mt-2">Astrology</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-hand-index text-3xl text-[#FF99CC]"></i>
+                <p class="mt-2">Palmistry</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-person-circle text-3xl text-[#FFD700]"></i>
+                <p class="mt-2">Face Reading</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-diamond-fill text-3xl text-[#FF99CC]"></i>
+                <p class="mt-2">Tarot</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-suit-heart-fill text-3xl text-[#FFD700]"></i>
+                <p class="mt-2">Cartomancy</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-brightness-high text-3xl text-[#FF99CC]"></i>
+                <p class="mt-2">Angel Guidance</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-cloud-sun-fill text-3xl text-[#FFD700]"></i>
+                <p class="mt-2">Aura Reading</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-lightning-fill text-3xl text-[#FF99CC]"></i>
+                <p class="mt-2">Energy Reading</p>
+            </div>
+            <div class="feature-card rounded-lg p-4 text-center cursor-pointer">
+                <i class="bi bi-123 text-3xl text-[#FFD700]"></i>
+                <p class="mt-2">Numerology</p>
+            </div>
+        </div>
+
+        <!-- Daily Crystal Suggestion -->
+        <div class="mt-8 p-6 feature-card rounded-lg">
+            <h2 class="mystical-title text-2xl text-[#FFD700] mb-4">Today's Crystal</h2>
+            <div class="flex items-center">
+                <div class="w-16 h-16 bg-[#FF99CC] rounded-full mr-4"></div>
+                <div>
+                    <h3 class="text-xl">Rose Quartz</h3>
+                    <p class="text-[#CFCFCF]">For love and emotional healing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation handling
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+            });
+        });
+
+        // Double tap to exit
+        let lastTap = 0;
+        document.addEventListener('touchend', (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 500 && tapLength > 0) {
+                if(confirm('Do you want to exit the app?')) {
+                    // In a real app, this would trigger app exit
+                    console.log('App would exit here');
+                }
+            }
+            lastTap = currentTime;
+        });
+
+        // Feature cards click handling
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // This would trigger the respective feature in a real app
+                const feature = card.querySelector('p').textContent;
+                console.log(`Opening ${feature} feature`);
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
